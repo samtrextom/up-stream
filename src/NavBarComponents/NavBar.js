@@ -1,26 +1,41 @@
 import React from 'react';
-import navBarData from "./navBarData";
-import NavBarElement from "./NavBarElement";
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {signOut, signIn} from '../Store/Actions/authActions'
+import SignedInLinks from './SignedOutLinks'
+import SignedOutLinks from './SignedInLinks'
 
-function NavBar() {
+class NavBar extends React.Component {
+    render(){
 
-    const navButtons = navBarData.map(item=> <NavBarElement key = {item.id} item ={item}/>)
+        const inOut = this.props.state.firebase.auth.uid ? <SignedInLinks></SignedInLinks> : <SignedOutLinks></SignedOutLinks>
 
-    return (
-        <nav className="navbar">
-            <div className="row">
-                <div className='col guild-name'>
-                    <Link to="/Home">
-                        <h1>UpStream</h1>
-                    </Link>
+        return (
+            <nav className="navbar">
+                <div className="row">
+                    <div className='col guild-name'>
+                        <Link to="/Home">
+                            <h1>UpStream</h1>
+                        </Link>
+                    </div>
+                    {inOut}
                 </div>
-                <div className="nav nav-pills col">
-                    {navButtons}
-                </div>
-            </div>   
-        </nav>
-    );
+            </nav>
+        );
+    }
+    
 }
 
-export default NavBar;
+const mapStateToProps=(state)=>{
+    return{
+        state
+    }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        signIn:(creds) => dispatch(signIn(creds))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

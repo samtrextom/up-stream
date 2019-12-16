@@ -3,12 +3,12 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import NavBar from './NavBarComponents/NavBar'
-import UserNavBar from './NavBarComponents/UserNavBar'
 import TextField from '@material-ui/core/TextField'
 import {withStyles} from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import FormControl from '@material-ui/core/FormControl'
 
 const style={
     padding: '0px',
@@ -85,8 +85,7 @@ class Register extends React.Component{
 
         return(
             <div>
-                <NavBar></NavBar>
-                <UserNavBar></UserNavBar>          
+                <NavBar></NavBar>     
                 <div className="home-page">
                     <Container float="center">
                         <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
@@ -94,49 +93,49 @@ class Register extends React.Component{
                                 <Col style={style} md="auto">
                                     <div className="login-form">
                                         <h2>Account Info</h2>
-                                        <div>
-                                            <div>
+                                        <div className="form-wrapper">
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                     id="username" label="User Name" onChange={this.handleChange}/>
-                                            </div>
-                                            <div>
+                                            </FormControl>
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="email" label="Email" onChange={this.handleChange}/>
-                                            </div>
-                                            <div>
+                                            </FormControl>
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}}
                                                     id="password1" label="Password" type={this.state.showPassword ? 'text' : 'password'} onChange={this.handlePasswordChange}/>
                                                 <IconButton aria-label="toggle password visibility" onClick={this.handleClickShowPassword} onMouseDown={this.handleMouseDownPassword}>
                                                     {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
                                                 </IconButton>            
-                                            </div>
-                                            <div>
+                                            </FormControl>
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={this.state.confirmPassword ? {className: classes.input} : {className: classes.errorInput}} 
                                                         InputProps={this.state.confirmPassword ? {className: classes.input} : {className: classes.errorInput}} 
                                                         inputProps={this.state.confirmPassword ? {className: classes.underline} : {className: classes.errorUnderline}}
                                                         FormHelperTextProps={{className: classes.errorInput}}
                                                     id="password22" label="Re-Enter Password" type={this.state.showPassword ? 'text' : 'password'} onChange={this.handlePasswordChange}
                                                     helperText={this.state.confirmPassword ? "" : "Passwords Do Not Match"}/>
-                                            </div>
+                                            </FormControl>
                                         </div>
                                     </div>
                                 </Col>
                                 <Col style={style} md="auto">
                                     <div className="login-form">
                                         <h2>Personal Info</h2>
-                                        <div>
-                                            <div>
+                                        <div className="form-wrapper">
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="firstName" label="First Name" onChange={this.handleChange}/>
-                                            </div>
-                                            <div>
+                                            </FormControl>
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="lastName" label="Last Name" onChange={this.handleChange}/>
-                                            </div>
-                                            <div>
+                                            </FormControl>
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="country" label="Country" onChange={this.handleChange}/>
-                                            </div>
+                                            </FormControl>
                                         </div>
                                     </div>
                                 </Col>
@@ -145,38 +144,38 @@ class Register extends React.Component{
                                 <Col style={style} md="auto">
                                     <div className="login-form">
                                         <h2>Game Info</h2>
-                                        <div>
-                                            <div>
+                                        <div className="form-wrapper"> 
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="genre" label="Favorite Genre" onChange={this.handleChange}/>
-                                            </div>
-                                            <div>
+                                            </FormControl>
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="game" label="Favorite Game" onChange={this.handleChange}/>
-                                            </div>
+                                            </FormControl>
                                         </div>
                                     </div>
                                 </Col>
                                 <Col style={style} md="auto">
                                     <div className="login-form">
                                         <h2>Social Media</h2>
-                                        <div>
-                                            <div>
+                                        <div className="form-wrapper">
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="youtube" label="YouTube" onChange={this.handleChange}/>
-                                            </div>
-                                            <div>
+                                            </FormControl>
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="twitch" label="Twitch" onChange={this.handleChange}/>
-                                            </div>
-                                            <div>
+                                            </FormControl>
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="twitter" label="Twitter" onChange={this.handleChange}/>
-                                            </div>
-                                            <div>
+                                            </FormControl>
+                                            <FormControl fullWidth >
                                                 <TextField InputLabelProps={{className: classes.input}} InputProps={{className: classes.input}} inputProps={{className: classes.underline}} 
                                                 id="instagram" label="Instagram" onChange={this.handleChange}/>
-                                            </div>
+                                            </FormControl>
                                         </div>
                                         <button className="login-btn glow-on-hover-btn" type="submit">
                                             Sign Up

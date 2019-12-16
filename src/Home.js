@@ -5,7 +5,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import tempData from './tempArticleData'
 import NavBar from './NavBarComponents/NavBar'
-import UserNavBar from './NavBarComponents/UserNavBar'
+import {firestoreConnect} from 'react-redux-firebase'
+import {compose} from 'redux'
+import {connect} from 'react-redux'
 
 const style={
     padding: '0px',
@@ -20,8 +22,7 @@ class Home extends React.Component{
 
         return(
             <div>
-                <NavBar></NavBar>
-                <UserNavBar></UserNavBar>          
+                <NavBar></NavBar>         
                 <div className="home-page">
                     <Container float="center">
                         <Row style={style} className="justify-content-md-center">
@@ -87,6 +88,19 @@ class Home extends React.Component{
     }
 }
 
-export default Home
+const mapStateToProps=(state)=>{
+
+    console.log(state)
+    return {
+        articles: state.firestore.ordered.articles
+    }
+}
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'articles'}
+    ])
+)(Home)
 
 

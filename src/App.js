@@ -6,6 +6,7 @@ import Login from './LoginComponents/Login.js'
 import Footer from './Footer.js'
 import Home from './Home.js'
 import Register from './Register.js'
+import WriteArticle from'./WriteArticle'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
               <Route path = '/' exact component = {Login}/>
               <Route path = '/Home' exact component = {Home}/>
               <Route path = '/Register' exact component = {Register}/>
+              <Route path = '/NewArticle' exact component = {WriteArticle}/>
           </Switch>
           <Footer/>
         </div>
